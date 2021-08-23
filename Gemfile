@@ -23,6 +23,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'decidim-dev', DECIDIM_VERSION
+  gem 'bootsnap'
 end
 
 group :development do
