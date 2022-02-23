@@ -4,18 +4,31 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.24-stable" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.25-stable" }.freeze
 
-gem "daemons"
-gem "delayed_job_active_record"
+gem "decidim", DECIDIM_VERSION
 gem "puma"
 gem "uglifier", ">= 1.3.0"
-gem "whenever"
+gem "webpacker"
 
 gem "figaro", ">= 1.1.1"
 gem "openssl"
+# For seeds
+gem "faker"
 
-gem "decidim", DECIDIM_VERSION
+# if deploying to a dedicated server
+# gem "daemons"
+# gem "delayed_job_active_record"
+# gem "whenever"
+# elsif deploying to Heroku
+gem "sidekiq"
+gem "redis"
+group :production do
+  gem "rails_12factor"
+  gem "fog-aws"
+  gem "rack-ssl-enforcer"
+end
+# endif
 
 group :development, :test do
   gem "better_errors"
