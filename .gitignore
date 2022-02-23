@@ -29,3 +29,16 @@ public/uploads
 /Capfile
 
 spec/decidim_dummy_app
+
+/public/packs
+/public/packs-test
+/public/decidim-packs
+yarn-debug.log*
+.yarn-integrity
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
