@@ -13,20 +13,18 @@ gem "webpacker"
 
 gem "figaro", ">= 1.1.1"
 gem "openssl"
-# For seeds
-gem "faker"
 
 # if deploying to a dedicated server
 # gem "daemons"
 # gem "delayed_job_active_record"
 # gem "whenever"
 # elsif deploying to Heroku
-gem "sidekiq"
 gem "redis"
+gem "sidekiq"
 group :production do
-  gem "rails_12factor"
   gem "fog-aws"
   gem "rack-ssl-enforcer"
+  gem "rails_12factor"
 end
 # endif
 
