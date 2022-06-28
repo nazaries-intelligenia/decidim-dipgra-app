@@ -38,9 +38,12 @@ yarn-debug.log*
 
 /public/packs
 /public/packs-test
-/node_modules
+node_modules/
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 
 /config/master.key
+public/decidim-packs/
+
+storage/
