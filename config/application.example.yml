@@ -29,3 +29,7 @@ staging:
 
 production:
   <<: *default
+
+test:
+  <<: *default
+  DB_TEST_DATABASE: "database test name"

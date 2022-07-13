@@ -9,8 +9,8 @@ describe "Homepage", type: :system do
     create(
       :organization,
       name: "Decidim Application",
-      default_locale: :ca,
-      available_locales: [:ca, :en, :es]
+      default_locale: :es,
+      available_locales: [:en, :es]
     )
   end
   let!(:hero) { create :content_block, organization: organization, scope_name: :homepage, manifest_name: :hero, settings: { "welcome_text_ca"=>"Benvinguda a Decidim Application" } }

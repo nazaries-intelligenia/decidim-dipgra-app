@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-  config.application_name = "Decidim Clean APP"
+  config.application_name = "Decidim Digra APP"
 
   config.mailer_sender = Rails.application.secrets.smtp_username
 
   # Change these lines to set your preferred locales
-  config.default_locale = :ca
-  config.available_locales = [:ca, :en, :es]
+  config.default_locale = :es
+  config.available_locales = [:en, :es]
 
   config.enable_html_header_snippets = true
   config.track_newsletter_links = true
