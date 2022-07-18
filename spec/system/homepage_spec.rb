@@ -13,10 +13,11 @@ describe "Homepage", type: :system do
       available_locales: [:en, :es]
     )
   end
-  let!(:hero) { create :content_block, organization: organization, scope_name: :homepage, manifest_name: :hero, settings: { "welcome_text_ca"=>"Benvinguda a Decidim Application" } }
+  let!(:hero) { create :content_block, organization: organization, scope_name: :homepage, manifest_name: :hero, settings: { "welcome_text_en"=>"Welcome to Decidim Application" } }
   let!(:sub_hero) { create :content_block, organization: organization, scope_name: :homepage, manifest_name: :sub_hero }
 
   before do
+    I18n.locale = :en
     switch_to_host(organization.host)
     visit decidim.root_path
   end
@@ -26,7 +27,7 @@ describe "Homepage", type: :system do
 
     expect(page).to have_content("Decidim Application")
     within "section.hero .hero__container" do
-      expect(page).to have_content("Benvinguda a Decidim Application")
+      expect(page).to have_content("Welcome to Decidim Application")
     end
     within "section.subhero" do
       subhero_msg= translated(organization.description).gsub(%r{</p>\s+<p>}, "<br><br>").gsub(%r{<p>(((?!</p>).)*)</p>}mi, "\\1")

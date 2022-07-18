@@ -22,3 +22,18 @@ user.save!
 By the moment, there's no Here Maps configured yet.
 
 You're good to go!
+
+## Testing
+
+Configure the name of the test DB in you `config/application.yml` file and run:
+
+```
+RAILS_ENV=test bundle exec rails db:create
+RAILS_ENV=test bundle exec rails db:migrate
+```
+
+Require missing factories in `spec/factories.rb`
+
+Add `require "rails_helper"` to your specs and execute them from the **root directory**, i.e.:
+
+`bundle exec rspec spec`

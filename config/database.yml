@@ -14,11 +14,14 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV['DB_TEST_DATABASE'] %>
 
 integration:
   <<: *default
 
 production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
+preprod:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
