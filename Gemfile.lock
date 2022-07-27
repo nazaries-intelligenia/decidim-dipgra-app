@@ -315,7 +315,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
-    connection_pool (2.2.5)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -391,24 +390,13 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.12.0)
-      fog-core (~> 2.1)
-      fog-json (~> 1.1)
-      fog-xml (~> 0.1)
-      ipaddress (~> 0.8)
     fog-core (2.3.0)
       builder
       excon (~> 0.71)
       formatador (>= 0.2, < 2.0)
       mime-types
-    fog-json (1.2.0)
-      fog-core
-      multi_json (~> 1.10)
     fog-local (0.8.0)
       fog-core (>= 1.27, < 3.0)
-    fog-xml (0.1.4)
-      fog-core
-      nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
     foundation_rails_helper (4.0.1)
       actionpack (>= 4.1, < 7.1)
@@ -446,7 +434,6 @@ GEM
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
     ipaddr (1.2.3)
-    ipaddress (0.8.3)
     json (2.6.2)
     jwt (2.4.1)
     kaminari (1.2.2)
@@ -539,6 +526,9 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    omniauth-saml (2.1.0)
+      omniauth (~> 2.0)
+      ruby-saml (~> 1.12)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -575,7 +565,6 @@ GEM
       rack
     rack-proxy (0.7.2)
       rack
-    rack-ssl-enforcer (0.2.9)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (6.0.5)
@@ -605,11 +594,6 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (6.0.5)
       actionpack (= 6.0.5)
       activesupport (= 6.0.5)
@@ -689,6 +673,9 @@ GEM
     rubocop-rspec (1.43.2)
       rubocop (~> 0.87)
     ruby-progressbar (1.11.0)
+    ruby-saml (1.14.0)
+      nokogiri (>= 1.10.5)
+      rexml
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
@@ -703,10 +690,6 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     seven_zip_ruby (1.3.0)
-    sidekiq (6.3.1)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      redis (>= 4.2.0)
     simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -803,15 +786,12 @@ DEPENDENCIES
   delayed_job_active_record
   faker
   figaro (>= 1.1.1)
-  fog-aws
   letter_opener_web
   listen (~> 3.1.0)
+  omniauth-rails_csrf_protection (~> 1.0)
+  omniauth-saml (~> 2.1.0)
   openssl
   puma
-  rack-ssl-enforcer
-  rails_12factor
-  redis
-  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier (>= 1.3.0)

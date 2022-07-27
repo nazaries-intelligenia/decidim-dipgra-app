@@ -10,25 +10,25 @@ gem "decidim", DECIDIM_VERSION
 gem "puma"
 gem "uglifier", ">= 1.3.0"
 gem "webpacker"
-gem "whenever"
 
-gem "daemons"
-gem "delayed_job_active_record"
 gem "figaro", ">= 1.1.1"
 gem "openssl"
 
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-saml", "~> 2.1.0"
+
 # if deploying to a dedicated server
-# gem "daemons"
-# gem "delayed_job_active_record"
-# gem "whenever"
+gem "daemons"
+gem "delayed_job_active_record"
+gem "whenever"
 # elsif deploying to Heroku
-gem "redis"
-gem "sidekiq"
-group :production do
-  gem "fog-aws"
-  gem "rack-ssl-enforcer"
-  gem "rails_12factor"
-end
+# gem "redis"
+# gem "sidekiq"
+# group :production do
+#   gem "fog-aws"
+#   gem "rack-ssl-enforcer"
+#   gem "rails_12factor"
+# end
 # endif
 
 group :development, :test do
