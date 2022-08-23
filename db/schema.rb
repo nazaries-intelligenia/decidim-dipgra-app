@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_14_070355) do
+ActiveRecord::Schema.define(version: 2022_08_03_063624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -982,6 +982,8 @@ ActiveRecord::Schema.define(version: 2022_07_14_070355) do
     t.string "machine_translation_display_priority", default: "original", null: false
     t.string "external_domain_whitelist", default: [], array: true
     t.boolean "enable_participatory_space_filters", default: true
+    t.integer "municipality_code"
+    t.integer "ine_code"
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true
   end

@@ -7,6 +7,8 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.26-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
+gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authorization"
+
 gem "puma"
 gem "uglifier", ">= 1.3.0"
 gem "webpacker"
@@ -16,6 +18,8 @@ gem "daemons"
 gem "delayed_job_active_record"
 gem "figaro", ">= 1.1.1"
 gem "openssl"
+
+gem "deface"
 
 # if deploying to a dedicated server
 # gem "daemons"
