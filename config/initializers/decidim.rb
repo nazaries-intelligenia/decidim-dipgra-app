@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-  config.application_name = "Decidim Digra APP"
+  config.application_name = "Decidim Dipgra APP"
 
   config.mailer_sender = Rails.application.secrets.smtp_username
 

@@ -18,6 +18,7 @@ AllCops:
     - db/migrate/*
     - "node_modules/**/*"
     - "spec/decidim_dummy_app/**/*"
+    - "decidim-dipgra_census_authorization/spec/decidim_dummy_app/**/*"
 
   # Default formatter will be used if no -f/--format option is given.
   DefaultFormatter: progress
