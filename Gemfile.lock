@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/CodiTramuntana/decidim-file_authorization_handler.git
+  revision: 7adaf35742eb6466793ec0e176a5075755a567ee
+  tag: v0.26.2.3
+  specs:
+    decidim-file_authorization_handler (0.26.2.3)
+      decidim (~> 0.26.2)
+      decidim-admin (~> 0.26.2)
+      rails (>= 5.2)
+
+GIT
   remote: https://github.com/CodiTramuntana/decidim.git
   revision: 76044a93cb4d15055036503685f1d7b6aae01ab7
   branch: release/0.26-stable
@@ -171,6 +181,14 @@ GIT
       decidim-forms (= 0.26.2)
     decidim-verifications (0.26.2)
       decidim-core (= 0.26.2)
+
+GIT
+  remote: https://github.com/mainio/decidim-module-term_customizer
+  revision: 9540a2ab20b872896e51ea5f97c5ebae3388ca60
+  specs:
+    decidim-term_customizer (0.26.0)
+      decidim-admin (~> 0.26.0)
+      decidim-core (~> 0.26.0)
 
 PATH
   remote: decidim-dipgra_census_authorization
@@ -839,6 +857,8 @@ DEPENDENCIES
   decidim!
   decidim-dev!
   decidim-dipgra_census_authorization!
+  decidim-file_authorization_handler!
+  decidim-term_customizer!
   deface
   delayed_job_active_record
   faker
