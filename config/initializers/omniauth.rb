@@ -2,6 +2,8 @@
 
 require "omniauth/strategies/clave"
 
+OmniAuth.config.logger= Rails.logger
+
 class ClaveAutosubmitForm
   def call(env)
     settings= OneLogin::RubySaml::Settings.new(env["omniauth.strategy"].options)
@@ -50,15 +52,15 @@ if Rails.application.secrets.dig(:omniauth, :clave).present?
                org_config = organization.enabled_omniauth_providers[:clave]
                conf= env["omniauth.strategy"].options
 
-               conf[:sp_entity_id] = org_config[:sp_entity_id] || Rails.application.secrets.omniauth.dig(:clave, :sp_entity_id)
-               conf[:idp_sso_service_url] = org_config[:site_url] || Rails.application.secrets.omniauth.dig(:clave, :idp_sso_service_url)
-               conf[:idp_cert_fingerprint] = org_config[:idp_cert_fingerprint] || Rails.application.secrets.omniauth.dig(:clave, :idp_cert_fingerprint)
-               conf[:certificate] = org_config[:sp_certificate] || Rails.application.secrets.omniauth.dig(:clave, :sp_certificate)
-               conf[:private_key] = org_config[:sp_private_key] || Rails.application.secrets.omniauth.dig(:clave, :sp_private_key)
+               conf[:sp_entity_id] = org_config[:sp_entity_id].presence || Rails.application.secrets.omniauth.dig(:clave, :sp_entity_id)
+               conf[:idp_sso_service_url] = org_config[:site_url].presence || Rails.application.secrets.omniauth.dig(:clave, :idp_sso_service_url)
+               conf[:idp_cert_fingerprint] = org_config[:idp_cert_fingerprint].presence || Rails.application.secrets.omniauth.dig(:clave, :idp_cert_fingerprint)
+               conf[:certificate] = org_config[:sp_certificate].presence || Rails.application.secrets.omniauth.dig(:clave, :sp_certificate)
+               conf[:private_key] = org_config[:sp_private_key].presence || Rails.application.secrets.omniauth.dig(:clave, :sp_private_key)
                # response config
                conf[:form]= ClaveAutosubmitForm.new
                conf[:double_quote_xml_attribute_values]= true
-               conf[:idp_cert] = org_config[:idp_certificate] || Rails.application.secrets.omniauth.dig(:clave, :idp_certificate)
+               conf[:idp_cert] = org_config[:idp_certificate].presence || Rails.application.secrets.omniauth.dig(:clave, :idp_certificate)
                conf[:skip_conditions] = true
                conf[:skip_audience] = true
                conf[:attribute_statements] = {
