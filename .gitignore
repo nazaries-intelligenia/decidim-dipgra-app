@@ -23,6 +23,7 @@ public/uploads/
 # Ignore deploy secrets
 /config/deploy.rb
 /config/deploy/*
+/config/clave/
 /Capfile
 
 spec/decidim_dummy_app/
