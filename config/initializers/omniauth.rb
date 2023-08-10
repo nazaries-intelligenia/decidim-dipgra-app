@@ -31,7 +31,7 @@ class ClaveAutosubmitForm
       <noscript>
       <p><strong>Note:</strong> Since your browser does not support JavaScript, you must press the button below once to proceed.</p>
       </noscript>
-      <form method="post" action="#{ENV["CLAVE_IDP_SSO_SERVICE_URL"]}">
+      <form method="post" action="#{ENV.fetch("CLAVE_IDP_SSO_SERVICE_URL", nil)}">
       <input type="hidden" name="SAMLRequest" value="#{rq_value}" />
       <noscript><input type="submit" value="Submit" /></noscript>
       </form>
