@@ -4,28 +4,34 @@ require "spec_helper"
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe DipgraCensusAuthorization do
-  let(:organization) { create(:organization) }
-  let(:subject) do
-    allow(Rails.application.secrets).to receive(:dipgra_census).and_return(JSON.parse({
-      username: "username",
-      password: "password",
-      url: "http://dipgra.ws/services/Ci",
-      public_key: "public_key"
-    }.to_json, object_class: OpenStruct))
+  subject(:test_subject) do
+    allow(Rails.application.secrets).to receive(:dipgra_census).and_return(api_config)
 
     api = DipgraCensusAuthorization.new(DipgraCensusAuthorizationConfig.api_config(organization))
     rs = api.call(document_type: 1,
-                  id_document: id_document,
+                  id_document:,
                   birthdate: date)
     rs
   end
 
+  let(:api_config) do
+    {
+      username: "username",
+      password: "password",
+      url: "http://dipgra.ws/services/Ci",
+      public_key: "public_key"
+    }
+  end
+  let(:organization) { create(:organization) }
   let(:document_type) { 1 }
   let(:id_document) { "58958982T" }
   let(:date) { Date.parse("20000101101010") }
   let(:stubbed_response) { success_response }
 
   context "with participant's data" do
+    let(:fecha) { encode_time(Time.now.utc) }
+    let(:nonce) { big_random }
+    let(:token) { create_token(nonce, fecha) }
     let(:codigo_habitante) { "1234" }
     let(:rs_birthdate) { "20000101000000" }
 
@@ -37,7 +43,7 @@ RSpec.describe DipgraCensusAuthorization do
             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "Content-Type" => "text/xml",
             "Soapaction" => "servicio",
-            "User-Agent" => "Faraday v2.3.0"
+            "User-Agent" => "Faraday v2.7.4"
           }
         )
         .to_return(status: 200, body: raw_response, headers: {})
@@ -45,14 +51,14 @@ RSpec.describe DipgraCensusAuthorization do
 
     context "with success response" do
       it "performs request and parses response" do
-        expect(subject).to eq(DipgraCensusAuthorization::DipgraCensusData.new(document_type, id_document, date))
+        expect(test_subject).to eq(DipgraCensusAuthorization::DipgraCensusData.new(document_type, id_document, date))
       end
     end
   end
 
   def request_body
     <<~EOBODY
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<env:Envelope\n    xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n    xmlns:impl=\"http://10.1.100.102:8080/services/Ci?wsdl\"\n    xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <env:Body>\n        <impl:servicio>\n          <e><![CDATA[<e>\n  <ope>\n    <apl>PAD</apl>\n    <tobj>HAB</tobj>\n    <cmd>DATOSHABITANTES</cmd>\n    <ver>2.0</ver>\n  </ope>\n  <sec>\n    <cli>ACCEDE</cli>\n    <org>100</org>\n    <ent>100</ent>\n    <usu>20username</usu>\n    <pwd>W6ph5Mm5Pz8GgiULbPgzG37mj9g=</pwd>\n    <fecha>20220803072333</fecha>\n    <nonce>40138103743840</nonce>\n    <token>qndChEGVmsPYyM+uJHFedfaXSdFYsS2DSi+8RcokUteHAal9ckHIkcSPnsGIq+kZhQ/vAK7rl5pUaBmFzP2rMg==</token>\n  </sec>\n  <par>\n    <codigoTipoDocumento>1</codigoTipoDocumento>\n    <documento>NTg5NTg5ODJU\n</documento>\n    <nombre></nombre>\n    <particula1></particula1>\n    <apellido1></apellido1>\n    <particula2></particula2>\n    <apellido2></apellido2>\n    <fechaNacimiento>20000101000000</fechaNacimiento>\n    <busquedaExacta>-1</busquedaExacta>\n  </par>\n</e>\n]]></e>\n        </impl:servicio>\n    </env:Body>\n</env:Envelope>\n"
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<env:Envelope\n    xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n    xmlns:impl=\"http://10.1.100.102:8080/services/Ci?wsdl\"\n    xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <env:Body>\n        <impl:servicio>\n          <e><![CDATA[<e>\n  <ope>\n    <apl>PAD</apl>\n    <tobj>HAB</tobj>\n    <cmd>DATOSHABITANTES</cmd>\n    <ver>2.0</ver>\n  </ope>\n  <sec>\n    <cli>ACCEDE</cli>\n    <org>100</org>\n    <ent>100</ent>\n    <usu>20username</usu>\n    <pwd>W6ph5Mm5Pz8GgiULbPgzG37mj9g=</pwd>\n    <fecha>#{fecha}</fecha>\n    <nonce>#{nonce}</nonce>\n    <token>#{token}</token>\n  </sec>\n  <par>\n    <codigoTipoDocumento>1</codigoTipoDocumento>\n    <documento>NTg5NTg5ODJU\n</documento>\n    <nombre></nombre>\n    <particula1></particula1>\n    <apellido1></apellido1>\n    <particula2></particula2>\n    <apellido2></apellido2>\n    <fechaNacimiento>20000101000000</fechaNacimiento>\n    <busquedaExacta>-1</busquedaExacta>\n  </par>\n</e>\n]]></e>\n        </impl:servicio>\n    </env:Body>\n</env:Envelope>\n"
     EOBODY
   end
 

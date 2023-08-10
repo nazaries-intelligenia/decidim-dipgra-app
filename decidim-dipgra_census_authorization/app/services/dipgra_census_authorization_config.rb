@@ -28,8 +28,8 @@ class DipgraCensusAuthorizationConfig
     def api_config(organization)
       {
         username: "#{organization.ine_code}#{username}",
-        password: password,
-        organization: organization
+        password:,
+        organization:
       }
     end
   end

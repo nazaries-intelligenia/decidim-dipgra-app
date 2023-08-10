@@ -2,6 +2,6 @@
 
 module Decidim
   module DipgraCensusAuthorization
-    VERSION = "0.26.2"
+    VERSION = "0.27.0"
   end
 end
