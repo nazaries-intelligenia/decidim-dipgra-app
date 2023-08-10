@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-require "virtus/multiparams"
-
 # An AuthorizationHandler that uses the DipgraCensusAuthorizationService to create authorizations
 class DipgraCensusAuthorizationHandler < Decidim::AuthorizationHandler
-  include Virtus::Multiparams
-
   # This is the input (from the user) to validate against
   attribute :document_type, Symbol
   attribute :id_document, String
@@ -56,9 +52,9 @@ class DipgraCensusAuthorizationHandler < Decidim::AuthorizationHandler
 
     @service = DipgraCensusAuthorization.new(DipgraCensusAuthorizationConfig.api_config(organization))
     @census_for_user = @service.call(
-      birthdate: birthdate,
+      birthdate:,
       document_type: DipgraCensusAuthorizationConfig::DOCUMENT_TYPE[document_type],
-      id_document: id_document
+      id_document:
     )
   end
 

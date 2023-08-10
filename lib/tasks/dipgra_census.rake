@@ -21,9 +21,9 @@ namespace :dipgra_census do
     puts "\nRESPONSE:"
     service = DipgraCensusAuthorizationRq.new(DipgraCensusAuthorizationConfig.api_config(organization))
     rs = service.send_rq(
-      birthdate: birthdate,
+      birthdate:,
       document_type: DipgraCensusAuthorizationConfig::DOCUMENT_TYPE[document_type],
-      id_document: id_document
+      id_document:
     )
     puts "RS: #{rs.body}"
     puts "Extracted RS: #{parse_response(rs)}"
