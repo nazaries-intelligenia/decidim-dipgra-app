@@ -43,3 +43,4 @@ storage/
 yarn-debug.log*
 
 /config/master.key
+/config/clave/
