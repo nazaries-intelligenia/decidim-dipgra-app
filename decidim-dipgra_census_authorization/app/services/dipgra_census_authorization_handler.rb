@@ -53,7 +53,7 @@ class DipgraCensusAuthorizationHandler < Decidim::AuthorizationHandler
     @service = DipgraCensusAuthorization.new(DipgraCensusAuthorizationConfig.api_config(organization))
     @census_for_user = @service.call(
       birthdate:,
-      document_type: DipgraCensusAuthorizationConfig::DOCUMENT_TYPE[document_type],
+      document_type: DipgraCensusAuthorizationConfig::DOCUMENT_TYPE[document_type&.to_sym],
       id_document:
     )
   end

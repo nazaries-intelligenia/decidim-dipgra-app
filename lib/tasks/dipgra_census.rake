@@ -7,7 +7,7 @@ namespace :dipgra_census do
   desc "Checks the given credentials against the Dipgra Census (document_type dni/nie/passport, birthdate yyyy/mm/dd)"
   task :check, [:org_id, :document_type, :id_document, :birthdate] => :environment do |_task, args|
     organization = Decidim::Organization.find(args.org_id)
-    document_type = args.document_type
+    document_type = args.document_type&.to_sym
     id_document = args.id_document
     birthdate = Time.strptime(args.birthdate, "%Y/%m/%d")
 
