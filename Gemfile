@@ -4,21 +4,19 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.27.5"
+DECIDIM_VERSION = "~> 0.28.0"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authorization"
-gem "decidim-file_authorization_handler", git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git", tag: "v0.27.1.2"
+gem "decidim-file_authorization_handler", git: "https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git", branch: "deps/decidim-0.28"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git"
 
-gem "decidim-clave", git: "https://github.com/CodiTramuntana/decidim-module-clave.git"
+gem "decidim-clave", git: "https://github.com/nazaries-intelligenia/decidim-module-clave.git"
 
-# temporal solution while gems embrace new psych 4 (the default in Ruby 3.1) behavior.
-gem "psych", "< 4"
+gem "psych", "~> 4.0"
 
 gem "puma"
 gem "uglifier", ">= 1.3.0"
-gem "webpacker"
 gem "whenever"
 
 gem "daemons"

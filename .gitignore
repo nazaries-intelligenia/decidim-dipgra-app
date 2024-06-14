@@ -26,6 +26,9 @@ public/uploads/
 /config/deploy/*
 /Capfile
 
+# Ignore env configuration files
+.rbenv-vars
+
 spec/decidim_dummy_app/
 
 /public/packs/
@@ -43,3 +46,6 @@ yarn-debug.log*
 
 /config/master.key
 /config/clave/
+
+# Ignore Tailwind configuration
+tailwind.config.js
