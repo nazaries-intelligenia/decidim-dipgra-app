@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_28_102452) do
+ActiveRecord::Schema.define(version: 2024_05_22_103308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -526,7 +526,7 @@ ActiveRecord::Schema.define(version: 2022_12_28_102452) do
     t.bigint "resource_id"
     t.string "decidim_author_type"
     t.bigint "decidim_author_id"
-    t.integer "decidim_user_group_id"
+    t.integer "decidim_user_group_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["decidim_author_type", "decidim_author_id"], name: "idx_endorsements_authors"
@@ -540,6 +540,7 @@ ActiveRecord::Schema.define(version: 2022_12_28_102452) do
     t.string "id_document"
     t.date "birthdate"
     t.datetime "created_at", null: false
+    t.jsonb "extras"
     t.index ["decidim_organization_id"], name: "decidim_census_data_org_id_index"
   end
 
@@ -1459,6 +1460,18 @@ ActiveRecord::Schema.define(version: 2022_12_28_102452) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_decidim_system_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_decidim_system_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "decidim_templates_templates", force: :cascade do |t|
+    t.integer "decidim_organization_id", null: false
+    t.string "templatable_type"
+    t.bigint "templatable_id"
+    t.jsonb "name", null: false
+    t.jsonb "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_templates_organization"
+    t.index ["templatable_type", "templatable_id"], name: "index_decidim_templates_templatable"
   end
 
   create_table "decidim_term_customizer_constraints", force: :cascade do |t|

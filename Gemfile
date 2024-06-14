@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = "~> 0.27.5"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authorization"

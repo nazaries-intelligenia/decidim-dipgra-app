@@ -2,10 +2,10 @@
 
 class DipgraCensusAuthorizationConfig
   DOCUMENT_TYPE = {
-    "nif" => "1",
-    "passport" => "2",
-    "residence_card" => "3",
-    "dni" => "6"
+    nif: "1",
+    passport: "2",
+    residence_card: "3",
+    dni: "6"
   }.freeze
 
   class << self
