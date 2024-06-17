@@ -42,7 +42,7 @@ namespace :dipgra_census do
 
   desc "Is there a Decidim::Authorization for the given document"
   task :find_authorization_by_doc, [:document, :birthdate] => :environment do |_task, args|
-    authorization= Decidim::Authorization.find_by(unique_id: to_unique_id(args.document))
+    authorization = Decidim::Authorization.find_by(unique_id: to_unique_id(args.document))
     puts authorization
   end
 
