@@ -803,7 +803,6 @@ DEPENDENCIES
   listen
   pry-rails
   psych (~> 4.0)
-  rubocop-factory_bot (= 2.25.1)
 
 BUNDLED WITH
    2.3.4

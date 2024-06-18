@@ -13,5 +13,3 @@ group :development, :test do
   gem "listen"
   gem "pry-rails"
 end
-
-gem "rubocop-factory_bot", "2.25.1"
