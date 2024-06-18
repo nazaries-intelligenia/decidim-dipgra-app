@@ -42,7 +42,7 @@ RSpec.describe DipgraCensusAuthorization do
             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "Content-Type" => "text/xml",
             "Soapaction" => "servicio",
-            "User-Agent" => "Faraday v2.7.4"
+            "User-Agent" => "Faraday v2.9.1"
           }
         )
         .to_return(status: 200, body: raw_response, headers: {})

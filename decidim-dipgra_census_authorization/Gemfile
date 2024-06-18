@@ -4,8 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-# temporal solution while gems embrace new psych 4 (the default in Ruby 3.1) behavior.
-gem "psych", "< 4"
+gem "psych", "~> 4.0"
 
 group :development, :test do
   gem "bootsnap"
@@ -14,3 +13,5 @@ group :development, :test do
   gem "listen"
   gem "pry-rails"
 end
+
+gem "rubocop-factory_bot", "2.25.1"
