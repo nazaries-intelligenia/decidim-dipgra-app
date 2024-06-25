@@ -46,3 +46,15 @@ jobs:
 
       - name: Rubocop
         run: bundle exec rubocop -P
+
+      - name: Lint Markdown files
+        run: bundle exec mdl *.md
+
+      - name: Lint ERB files
+        run: bundle exec erblint app/**/*.erb
+
+      - name: Lint SCSS files
+        run: npm run stylelint
+
+      - name: Lint JS files
+        run: npm run lint
