@@ -44,6 +44,9 @@ jobs:
           max_attempts: 3
           command: bundle install --jobs 4 --retry 3
 
+      - name: Install JS deps
+        run: npm ci
+
       - name: Rubocop
         run: bundle exec rubocop -P
 
