@@ -51,7 +51,7 @@ jobs:
         run: bundle exec mdl *.md
 
       - name: Lint ERB files
-        run: bundle exec erblint app/**/*.erb
+        run: bundle exec erblint {decidim-dipgra_census_authorization/}app/{cells,views}/**/*.erb
 
       - name: Lint SCSS files
         run: npm run stylelint
