@@ -14,7 +14,7 @@ end
 if Rails.application.secrets.dig(:storage, :s3, :access_key_id).present?
   require "carrierwave/storage/fog"
 
-  region= Rails.application.secrets.dig(:storage, :s3, :region)
+  region = Rails.application.secrets.dig(:storage, :s3, :region)
   CarrierWave.configure do |config|
     config.storage = :fog
     config.fog_provider = "fog/aws" # required
