@@ -13,8 +13,6 @@ gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-te
 
 gem "decidim-clave", git: "https://github.com/nazaries-intelligenia/decidim-module-clave.git"
 
-gem "psych", "~> 4.0"
-
 gem "puma"
 gem "uglifier", ">= 1.3.0"
 gem "whenever"
@@ -52,4 +50,5 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
+  gem "mdl"
 end
