@@ -11,3 +11,5 @@ exclude_rule "no-bare-urls"
 exclude_rule "no-inline-html"
 
 rule "no-trailing-punctuation", punctuation: ".,;:!"
+
+rule "ol-prefix", style: "ordered"

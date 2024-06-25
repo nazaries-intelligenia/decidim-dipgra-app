@@ -47,8 +47,8 @@ end
 group :development do
   gem "letter_opener_web"
   gem "listen"
+  gem "mdl"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
-  gem "mdl"
 end
