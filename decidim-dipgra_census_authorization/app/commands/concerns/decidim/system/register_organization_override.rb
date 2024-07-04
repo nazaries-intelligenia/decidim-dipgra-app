@@ -6,6 +6,8 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
+        private
+
         def create_organization
           Decidim::Organization.create!(
             name: form.name,
@@ -24,6 +26,8 @@ module Decidim
             smtp_settings: form.encrypted_smtp_settings,
             send_welcome_notification: true,
             file_upload_settings: form.file_upload_settings.final,
+            colors: default_colors,
+            content_security_policy: form.content_security_policy,
             # Customization for Dipgra Census
             ine_code: form.ine_code,
             municipality_code: form.municipality_code

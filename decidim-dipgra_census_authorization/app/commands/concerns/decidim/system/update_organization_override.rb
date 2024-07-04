@@ -6,6 +6,8 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
+        private
+
         def save_organization
           organization.name = form.name
           organization.host = form.host
@@ -16,6 +18,7 @@ module Decidim
           organization.omniauth_settings = form.encrypted_omniauth_settings
           organization.smtp_settings = form.encrypted_smtp_settings
           organization.file_upload_settings = form.file_upload_settings.final
+          organization.content_security_policy = form.content_security_policy
           # Customization for Dipra Census
           organization.ine_code = form.ine_code
           organization.municipality_code = form.municipality_code
