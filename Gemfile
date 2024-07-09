@@ -8,10 +8,10 @@ DECIDIM_VERSION = "~> 0.28.0"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authorization"
-gem "decidim-file_authorization_handler", git: "https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git", branch: "deps/decidim-0.28"
-gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git"
 
 gem "decidim-clave", git: "https://github.com/nazaries-intelligenia/decidim-module-clave.git"
+gem "decidim-file_authorization_handler", git: "https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git", branch: "deps/decidim-0.28"
+gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git"
 
 gem "puma"
 gem "uglifier", ">= 1.3.0"

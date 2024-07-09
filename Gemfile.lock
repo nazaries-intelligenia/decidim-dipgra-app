@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://github.com/nazaries-intelligenia/decidim-module-clave.git
-  revision: de3aa54e06f3f56a0571e1abe49e821ed620014f
+  revision: 73717ef48f647b87fab5fa0f076fe23546a4835c
   specs:
-    decidim-clave (0.0.1)
-      decidim (>= 0.27.3)
+    decidim-clave (0.0.2)
+      decidim (>= 0.28, < 0.29)
       omniauth-rails_csrf_protection (~> 1.0)
       omniauth-saml (~> 2.1.0)
       rails (>= 6)
