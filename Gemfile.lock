@@ -8,8 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git
-  revision: 0658e73e7b0de13cee33b47ccc435bbafa01866e
-  branch: deps/decidim-0.28
+  revision: 6ed0caf3f7b1eb7557714ca8fc140629b21fcb0a
   specs:
     decidim-file_authorization_handler (0.28.1.0)
       decidim (~> 0.28.1)
