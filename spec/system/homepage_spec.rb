@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Homepage", type: :system do
+describe "Homepage" do
   include Decidim::SanitizeHelper
 
   let!(:organization) do
@@ -13,8 +13,8 @@ describe "Homepage", type: :system do
       available_locales: [:en, :es]
     )
   end
-  let!(:hero) { create :content_block, organization:, scope_name: :homepage, manifest_name: :hero, settings: { "welcome_text_en"=>"Welcome to Decidim Application" } }
-  let!(:sub_hero) { create :content_block, organization:, scope_name: :homepage, manifest_name: :sub_hero }
+  let!(:hero) { create(:content_block, organization:, scope_name: :homepage, manifest_name: :hero, settings: { "welcome_text_en" => "Welcome to Decidim Application" }) }
+  let!(:sub_hero) { create(:content_block, organization:, scope_name: :homepage, manifest_name: :sub_hero) }
 
   before do
     # rubocop:disable Rails/I18nLocaleAssignment
@@ -28,11 +28,11 @@ describe "Homepage", type: :system do
     visit decidim.root_path
 
     expect(page).to have_content("Decidim Application")
-    within "section.hero .hero__container" do
+    within ".home .hero__container .hero" do
       expect(page).to have_content("Welcome to Decidim Application")
     end
-    within "section.subhero" do
-      subhero_msg= translated(organization.description).gsub(%r{</p>\s+<p>}, "<br><br>").gsub(%r{<p>(((?!</p>).)*)</p>}mi, "\\1")
+    within "#sub_hero" do
+      subhero_msg = translated(organization.description).gsub(%r{</p>\s+<p>}, "<br><br>").gsub(%r{<p>(((?!</p>).)*)</p>}mi, "\\1").sub("<script>", "").sub("</script>", "")
       expect(page).to have_content(subhero_msg)
     end
   end

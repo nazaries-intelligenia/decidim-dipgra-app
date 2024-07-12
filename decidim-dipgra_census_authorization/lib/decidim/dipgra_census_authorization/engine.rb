@@ -19,10 +19,9 @@ module Decidim
       end
 
       config.to_prepare do
-        decorators = "#{Decidim::DipgraCensusAuthorization::Engine.root}/app/decorators"
-        Dir.glob("#{decorators}/**/*_decorator.rb").each do |decorator|
-          require_dependency(decorator)
-        end
+        Decidim::System::RegisterOrganization.include(Decidim::System::RegisterOrganizationOverride)
+        Decidim::System::UpdateOrganization.include(Decidim::System::UpdateOrganizationOverride)
+        Decidim::System::UpdateOrganizationForm.include(Decidim::System::UpdateOrganizationFormOverride)
       end
     end
   end
