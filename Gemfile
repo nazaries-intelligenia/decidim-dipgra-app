@@ -11,6 +11,7 @@ gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authoriz
 
 gem "decidim-clave", git: "https://github.com/nazaries-intelligenia/decidim-module-clave.git"
 gem "decidim-conferences", DECIDIM_VERSION
+gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-file_authorization_handler", git: "https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git"
 
