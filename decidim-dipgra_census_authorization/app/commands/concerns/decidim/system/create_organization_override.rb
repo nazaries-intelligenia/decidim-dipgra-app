@@ -2,21 +2,22 @@
 
 module Decidim
   module System
-    module RegisterOrganizationOverride
+    module CreateOrganizationOverride
       extend ActiveSupport::Concern
 
       included do
         private
 
         def create_organization
+          debugger
           Decidim::Organization.create!(
-            name: form.name,
+            name: { form.default_locale => form.name },
             host: form.host,
             secondary_hosts: form.clean_secondary_hosts,
             reference_prefix: form.reference_prefix,
             available_locales: form.available_locales,
             available_authorizations: form.clean_available_authorizations,
-            external_domain_whitelist: ["decidim.org", "github.com"],
+            external_domain_allowlist: ["decidim.org", "github.com"],
             users_registration_mode: form.users_registration_mode,
             force_users_to_authenticate_before_access_organization: form.force_users_to_authenticate_before_access_organization,
             badges_enabled: true,
