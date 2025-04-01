@@ -9,7 +9,6 @@ module Decidim
         private
 
         def create_organization
-          debugger
           Decidim::Organization.create!(
             name: { form.default_locale => form.name },
             host: form.host,
