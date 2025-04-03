@@ -10,19 +10,19 @@ class DipgraCensusAuthorizationConfig
 
   class << self
     def url
-      Rails.application.secrets.dipgra_census[:url]
+      Rails.application.secrets.dig(:dipgra_census, :url) || "http://dipgra.ws/services/Ci"
     end
 
     def username
-      Rails.application.secrets.dipgra_census[:username]
+      Rails.application.secrets.dig(:dipgra_census, :username) || "username"
     end
 
     def password
-      Rails.application.secrets.dipgra_census[:password]
+      Rails.application.secrets.dig(:dipgra_census, :password) || "password"
     end
 
     def public_key
-      Rails.application.secrets.dipgra_census[:public_key]
+      Rails.application.secrets.dig(:dipgra_census, :public_key) || "abcde12345"
     end
 
     def api_config(organization)

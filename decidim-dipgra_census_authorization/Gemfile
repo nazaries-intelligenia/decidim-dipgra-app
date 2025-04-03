@@ -9,6 +9,7 @@ gem "psych", "~> 4.0"
 group :development, :test do
   gem "bootsnap"
   gem "decidim"
+  gem "deface"
   gem "letter_opener_web"
   gem "listen"
   gem "pry-rails"

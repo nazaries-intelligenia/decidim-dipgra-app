@@ -8,7 +8,6 @@ describe "Homepage" do
   let!(:organization) do
     create(
       :organization,
-      name: "Decidim Application",
       default_locale: :es,
       available_locales: [:en, :es]
     )

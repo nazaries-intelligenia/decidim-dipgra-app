@@ -9,7 +9,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.1.3
+  RUBY_VERSION: 3.2.6
   NODE_VERSION: 18.17.1
 
 jobs:
@@ -61,15 +61,6 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 119.0.6045.105
-          
-      - name: Recover Ruby dependency cache
-        uses: actions/cache@v1
-        with:
-          path: ./vendor/bundle
-          key: ${{ runner.OS }}-app-rubydeps-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-app-rubydeps-${{ env.cache-name }}-
-            ${{ runner.OS }}-app-rubydeps-
 
       - name: Set bundle local config vendor/bundle path
         run: bundle config set --local path 'vendor/bundle'
