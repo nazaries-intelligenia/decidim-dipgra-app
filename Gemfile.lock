@@ -8,8 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git
-  revision: 6c647b3a842a48308b1adc31a2d30eb0647102bb
-  branch: deps/decidim-0.29
+  revision: faa1028ae10dca48daab976247ad9dce6ee54ed2
   specs:
     decidim-file_authorization_handler (0.29.2.0)
       decidim (~> 0.29.2)
@@ -18,8 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nazaries-intelligenia/decidim-module-clave.git
-  revision: 1cd3902d94b33c1144735114604cd0609e4cb06a
-  branch: deps/decidim-0.29
+  revision: fcb1509ec60a7b2aaf0b2eb145cf9af1c7918186
   specs:
     decidim-clave (0.0.3)
       decidim (>= 0.29, < 0.30)
@@ -543,7 +541,7 @@ GEM
     mime-types (3.6.2)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0325)
+    mime-types-data (3.2025.0402)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.5)
@@ -753,7 +751,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.43.0)
+    rubocop-ast (1.44.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-capybara (2.21.0)
