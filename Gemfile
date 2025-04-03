@@ -7,6 +7,9 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = "~> 0.28.0"
 
 gem "decidim", DECIDIM_VERSION
+gem "decidim-conferences", DECIDIM_VERSION
+gem "decidim-initiatives", DECIDIM_VERSION
+
 gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authorization"
 
 gem "decidim-clave", git: "https://github.com/nazaries-intelligenia/decidim-module-clave.git"
