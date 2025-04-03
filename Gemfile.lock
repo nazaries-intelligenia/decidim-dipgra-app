@@ -437,6 +437,7 @@ GEM
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
+    geom2d (0.4.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     graphql (2.2.17)
@@ -902,6 +903,7 @@ DEPENDENCIES
   decidim-dev (~> 0.29.2)
   decidim-dipgra_census_authorization!
   decidim-file_authorization_handler!
+  decidim-initiatives (~> 0.28.0)
   decidim-term_customizer!
   deface
   delayed_job_active_record
