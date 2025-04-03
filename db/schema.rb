@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_03_113803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -485,8 +485,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.string "personal_url"
     t.string "avatar"
     t.bigint "decidim_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "published_at"
     t.index ["decidim_conference_id"], name: "index_decidim_conference_speakers_on_decidim_conference_id"
     t.index ["decidim_user_id"], name: "index_decidim_conference_speaker_on_decidim_user_id"
   end
@@ -495,8 +496,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.integer "decidim_user_id"
     t.integer "decidim_conference_id"
     t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_conference_id", "decidim_user_id", "role"], name: "index_unique_user_and_conference_role", unique: true
   end
 
@@ -513,7 +514,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.string "hero_image"
     t.string "banner_image"
     t.boolean "promoted", default: false
-    t.datetime "published_at"
+    t.datetime "published_at", precision: nil
     t.jsonb "objectives", null: false
     t.boolean "show_statistics", default: false
     t.date "start_date"
@@ -523,13 +524,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.boolean "registrations_enabled", default: false, null: false
     t.integer "available_slots", default: 0, null: false
     t.jsonb "registration_terms"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "signature_name"
     t.string "signature"
     t.string "main_logo"
     t.date "sign_date"
-    t.datetime "diploma_sent_at"
+    t.datetime "diploma_sent_at", precision: nil
     t.integer "follows_count", default: 0, null: false
     t.integer "weight", default: 0, null: false
     t.index ["decidim_organization_id", "slug"], name: "index_unique_conference_slug_and_organization", unique: true
@@ -540,11 +541,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
   create_table "decidim_conferences_conference_invites", force: :cascade do |t|
     t.bigint "decidim_user_id", null: false
     t.bigint "decidim_conference_id", null: false
-    t.datetime "sent_at"
-    t.datetime "accepted_at"
-    t.datetime "rejected_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "sent_at", precision: nil
+    t.datetime "accepted_at", precision: nil
+    t.datetime "rejected_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "decidim_conference_registration_type_id"
     t.index ["decidim_conference_id"], name: "idx_decidim_conferences_invites_on_conference_id"
     t.index ["decidim_conference_registration_type_id"], name: "ixd_conferences_on_registration_type_id"
@@ -561,10 +562,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
   create_table "decidim_conferences_conference_registrations", force: :cascade do |t|
     t.bigint "decidim_user_id", null: false
     t.bigint "decidim_conference_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "decidim_conference_registration_type_id"
-    t.datetime "confirmed_at"
+    t.datetime "confirmed_at", precision: nil
     t.index ["decidim_conference_id"], name: "index_conferences_registrations_on_decidim_conference"
     t.index ["decidim_conference_registration_type_id"], name: "idx_conferences_registrations_on_registration_type_id"
     t.index ["decidim_user_id", "decidim_conference_id"], name: "decidim_conferences_registrations_user_conference_unique", unique: true
@@ -577,8 +578,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.string "link", null: false
     t.date "date"
     t.integer "weight", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_conference_id"], name: "index_decidim_conferences_media_links_on_decidim_conference_id"
   end
 
@@ -589,8 +590,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.integer "weight", default: 0, null: false
     t.string "link"
     t.string "logo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_conference_id"], name: "index_decidim_conferences_partners_on_decidim_conference_id"
     t.index ["weight", "partner_type"], name: "index_decidim_conferences_partners_on_weight_and_partner_type"
   end
@@ -601,9 +602,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.jsonb "description", null: false
     t.decimal "price", precision: 8, scale: 2, default: "0.0"
     t.integer "weight", default: 0, null: false
-    t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "published_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_conference_id"], name: "idx_registration_types_on_decidim_conference_id"
     t.index ["published_at"], name: "index_decidim_conferences_registration_types_on_published_at"
   end
@@ -850,21 +851,21 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.jsonb "description", null: false
     t.integer "decidim_organization_id"
     t.bigint "decidim_author_id", null: false
-    t.datetime "published_at"
+    t.datetime "published_at", precision: nil
     t.integer "state", default: 0, null: false
     t.integer "signature_type", default: 0, null: false
     t.date "signature_start_date"
     t.date "signature_end_date"
     t.jsonb "answer"
-    t.datetime "answered_at"
+    t.datetime "answered_at", precision: nil
     t.string "answer_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "decidim_user_group_id"
     t.string "hashtag"
     t.integer "scoped_type_id"
-    t.datetime "first_progress_notification_at"
-    t.datetime "second_progress_notification_at"
+    t.datetime "first_progress_notification_at", precision: nil
+    t.datetime "second_progress_notification_at", precision: nil
     t.string "decidim_author_type", null: false
     t.string "reference"
     t.jsonb "online_votes", default: {}
@@ -887,8 +888,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.bigint "decidim_initiatives_id"
     t.bigint "decidim_users_id"
     t.integer "state", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_initiatives_id"], name: "index_decidim_committee_members_initiative"
     t.index ["decidim_users_id"], name: "index_decidim_committee_members_user"
     t.index ["state"], name: "index_decidim_initiatives_committee_members_on_state"
@@ -904,8 +905,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.bigint "decidim_initiatives_types_id"
     t.bigint "decidim_scopes_id"
     t.integer "supports_required", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_initiatives_types_id"], name: "idx_scoped_initiative_type_type"
     t.index ["decidim_scopes_id"], name: "idx_scoped_initiative_type_scope"
   end
@@ -914,8 +915,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
     t.jsonb "title", null: false
     t.jsonb "description", null: false
     t.integer "decidim_organization_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "banner_image"
     t.boolean "collect_user_extra_fields", default: false
     t.jsonb "extra_fields_legal_information"
@@ -937,8 +938,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_110327) do
   create_table "decidim_initiatives_votes", force: :cascade do |t|
     t.bigint "decidim_initiative_id", null: false
     t.bigint "decidim_author_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "encrypted_metadata"
     t.string "timestamp"
     t.string "hash_id"
