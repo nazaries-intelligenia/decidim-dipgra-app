@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "webmock/rspec"
 
 RSpec.describe DipgraCensusAuthorization do
   subject(:test_subject) do
@@ -42,7 +43,7 @@ RSpec.describe DipgraCensusAuthorization do
             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "Content-Type" => "text/xml",
             "Soapaction" => "servicio",
-            "User-Agent" => "Faraday v2.9.1"
+            "User-Agent" => "Faraday v2.12.2"
           }
         )
         .to_return(status: 200, body: raw_response, headers: {})

@@ -19,7 +19,7 @@ module Decidim
       end
 
       config.to_prepare do
-        Decidim::System::RegisterOrganization.include(Decidim::System::RegisterOrganizationOverride)
+        Decidim::System::CreateOrganization.include(Decidim::System::CreateOrganizationOverride)
         Decidim::System::UpdateOrganization.include(Decidim::System::UpdateOrganizationOverride)
         Decidim::System::UpdateOrganizationForm.include(Decidim::System::UpdateOrganizationFormOverride)
       end
