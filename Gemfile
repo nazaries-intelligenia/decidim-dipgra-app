@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.29.4"
+DECIDIM_VERSION = "~> 0.30.1"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-conferences", DECIDIM_VERSION
@@ -14,7 +14,7 @@ gem "decidim-dipgra_census_authorization", path: "decidim-dipgra_census_authoriz
 
 gem "decidim-clave", git: "https://github.com/nazaries-intelligenia/decidim-module-clave.git"
 gem "decidim-file_authorization_handler", git: "https://github.com/nazaries-intelligenia/decidim-file_authorization_handler.git"
-gem "decidim-term_customizer", git: "https://github.com/Platoniq/decidim-module-term_customizer.git"
+gem "decidim-term_customizer", git: "https://github.com/nazaries-intelligenia/decidim-module-term_customizer.git"
 
 gem "puma"
 gem "uglifier", ">= 1.3.0"
