@@ -126,7 +126,7 @@ Decidim.configure do |config|
         provider: dynamic_provider,
         api_key: Rails.application.secrets.maps[:dynamic_api_key],
         tile_layer: {
-          attribution: attribution,
+          attribution:,
           key: Rails.application.secrets.maps[:dynamic_api_key]
         }
       },
