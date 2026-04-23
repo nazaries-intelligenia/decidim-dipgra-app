@@ -1,6 +1,9 @@
 // This is a file that can be overridden by the application in order to override styles
 // Notice that this file is included at the very end of the stylesheets packs to have
 // more priority
-//
-//
-// By default this is empty.
+
+.meeting__calendar-container [data-decidim-map] {
+  flex: 1 1 auto;
+  min-height: 200px;
+  min-width: 200px;
+}

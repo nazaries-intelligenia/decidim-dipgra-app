@@ -100,34 +100,44 @@ Decidim.configure do |config|
   # settings. The maps configuration will manage which geocoding service to use,
   # so that does not need any additional configuration here. Use this only for
   # the global geocoder preferences.
-  # config.geocoder = {
-  #   # geocoding service request timeout, in seconds (default 3):
-  #   timeout: 5,
-  #   # set default units to kilometers:
-  #   units: :km,
-  #   # caching (see https://github.com/alexreisner/geocoder#caching for details):
-  #   cache: Redis.new,
-  #   cache_prefix: "..."
-  # }
+  config.geocoder = {
+    timeout: 5,
+    units: :km,
+    http_headers: {
+      "User-Agent" => "Decidim Diputación de Granada"
+    }
+  }
   if Rails.application.secrets.maps.present? && Rails.application.secrets.maps[:static_provider].present?
     static_provider = Rails.application.secrets.maps[:static_provider]
     dynamic_provider = Rails.application.secrets.maps[:dynamic_provider]
     dynamic_url = Rails.application.secrets.maps[:dynamic_url]
     static_url = Rails.application.secrets.maps[:static_url]
-    static_url = "https://image.maps.hereapi.com/mia/v3/base/mc/overlay" if static_provider == "here" && static_url.blank?
+    attribution = Rails.application.secrets.maps[:attribution].presence ||
+                  '&copy; <a href="https://www.maptiler.com/copyright/">MapTiler</a> ' \
+                  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
     config.maps = {
       provider: static_provider,
       api_key: Rails.application.secrets.maps[:static_api_key],
       static: { url: static_url },
       dynamic: {
         provider: dynamic_provider,
-        api_key: Rails.application.secrets.maps[:dynamic_api_key]
+        api_key: Rails.application.secrets.maps[:dynamic_api_key],
+        tile_layer: {
+          attribution:,
+          key: Rails.application.secrets.maps[:dynamic_api_key]
+        }
+      },
+      autocomplete: {
+        url: Rails.application.secrets.maps[:autocomplete_url]
+      },
+      geocoding: {
+        host: Rails.application.secrets.maps[:geocoding_host],
+        use_https: true
       }
     }
-    config.maps[:geocoding] = { host: Rails.application.secrets.maps[:geocoding_host], use_https: true } if Rails.application.secrets.maps[:geocoding_host]
-    config.maps[:dynamic][:tile_layer] = {}
     config.maps[:dynamic][:tile_layer][:url] = dynamic_url if dynamic_url
-    config.maps[:dynamic][:tile_layer][:attribution] = Rails.application.secrets.maps[:attribution] if Rails.application.secrets.maps[:attribution]
+
     if Rails.application.secrets.maps[:extra_vars].present?
       vars = URI.decode_www_form(Rails.application.secrets.maps[:extra_vars])
       vars.each do |key, value|
