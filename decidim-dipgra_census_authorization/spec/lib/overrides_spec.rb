@@ -11,7 +11,7 @@ checksums = [
     files: {
       "/app/commands/decidim/system/create_organization.rb" => "b7c49015ea3d682dbfd6d3c3f76e2d7a",
       "/app/commands/decidim/system/update_organization.rb" => "1fe0b3eb152fecdf63ef108743ae78e4",
-      "/app/forms/decidim/system/update_organization_form.rb" => "3fe09b001d83030207a6f5faa256ac3b",
+      "/app/forms/decidim/system/update_organization_form.rb" => "51e2fb7773d646652231133a12fd8ff3",
       "/app/views/decidim/system/organizations/_advanced_settings.html.erb" => "cbaf3ea59830ad669be2d4d2eca42902"
     }
   }
